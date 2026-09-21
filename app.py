@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello from YOUR_CUSTOM_IDENTIFIER!"
+    return "Hello from me on AWS - 3a5fda50!"
 
 
 @app.route("/health")
