@@ -4,22 +4,21 @@ os: linux
 
 files:
   - source: /
-    destination: /opt/flask-app
-    overwrite: true
+    destination: /opt/cmtr-3a5fda50
 
 hooks:
   ApplicationStop:
-    - location: scripts/stop_application.sh
-      timeout: 60
+    - location: scripts/stop.sh
+      timeout: 30
       runas: root
 
   AfterInstall:
-    - location: scripts/install_dependencies.sh
+    - location: scripts/install.sh
       timeout: 300
       runas: root
 
   ApplicationStart:
-    - location: scripts/start_application.sh
+    - location: scripts/start.sh
       timeout: 60
       runas: root
 

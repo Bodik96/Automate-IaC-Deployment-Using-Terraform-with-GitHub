@@ -1,12 +1,16 @@
 #!/bin/bash
+set -e 
 
-set -e
+cd /opt/cmtr-3a5fda50 
 
-cd /opt/flask-app
+source venv/bin/activate 
 
-nohup python3 app.py > /var/log/flask-app.log 2>&1 &
-
-sleep 5
+nohup gunicorn \ 
+	--bind 0.0.0.0:8000 \ 
+	--workers 2 \
+	app:app \ 
+	> /var/log/cmtr-3a5fda50.log 2>&1 & s
+	
+sleep 3 
 
 curl -f http://localhost:8000/health
-
